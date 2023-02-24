@@ -1,5 +1,6 @@
-dwm - dynamic window manager
+A fork of suckless/dwm
 ============================
+
 dwm is an extremely fast, small, and dynamic window manager for X.
 
 
@@ -10,6 +11,10 @@ In order to build dwm you need the Xlib header files.
 
 Installation
 ------------
+git clone https://github.com/SOGIST1/dwm --depth=1 ~/.config/dwm
+cd ~/.config/dwm
+sudo make clean install
+
 Edit config.mk to match your local setup (dwm is installed into
 the /usr/local namespace by default).
 
