@@ -980,6 +980,10 @@ grabkeys(void)
 void
 incnmaster(const Arg *arg)
 {
+	if(selmon->nmaster == 1 && arg->i == -1) { // Sogist: do not let nmaster go below 1 if there are windows on the stack
+		return;
+	}
+
 	// Sogist: find the number of windows on the current screen
 	size_t num_windows_on_stack = 0;
 	for(Client* curr = selmon->stack; curr != NULL; curr = curr->next) { 
@@ -988,6 +992,7 @@ incnmaster(const Arg *arg)
 	if(arg->i == 1 && selmon->nmaster == num_windows_on_stack) { // Sogist: to make sure you cannot add to the master area more windows than there currently exist on the current screen
 		return;
 	}
+
 	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
 	arrange(selmon);
 }
