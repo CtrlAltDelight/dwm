@@ -2164,7 +2164,8 @@ main(int argc, char *argv[])
 #endif /* __OpenBSD__ */
 	scan();
 	// Sogist: here is where I'm putting my stuff :P
-	system("~/.fehbg");
+	system("~/.fehbg"); // set wallpaper using feh
+	system("~/scripts/statusbar_time.sh &"); // display the current time on the statusbar. The & makes this run in the background
 	// Sogist: Done putting my stuff
 	run();
 	cleanup();
