@@ -93,6 +93,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("pulsemixer --change-volume -5")},
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("pulsemixer --change-volume +5")},
+	{ 0,                            XF86XK_MonBrightnessDown,   spawn, SHCMD("light -U 10")},
+	{ 0,                            XF86XK_MonBrightnessUp,     spawn, SHCMD("light -A 10")},
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
