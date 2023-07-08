@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include </home/sogist/.cache/wal/colors-wal-dwm.h>
 
 /* appearance */
 static const unsigned int borderpx = 4;  /* border pixel of windows */
@@ -13,12 +14,6 @@ static const char col_gray2[]      = "#444444";
 static const char col_gray3[]      = "#bbbbbb";
 static const char col_gray4[]      = "#eeeeee";
 static const char col_cyan[]       = "#005577";
-static const char *colors[][3]     = {
-
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-};
 
 /* tagging */
 static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
@@ -64,10 +59,11 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "/bin/kitty", NULL };
 
+static const char *rofi[]  = { "/bin/sh", "-c", "rofi -show run -config ~/.cache/wal/colors-rofi-dark.rasi", NULL };
 #include <X11/XF86keysym.h>
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("rofi -show run") },
+	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },
 	{ MODKEY,                       XK_o,      spawn,          SHCMD("rofi -show ssh") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
