@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-#include </home/sogist/.cache/wal/colors-wal-dwm.h>
 
 /* appearance */
 static const unsigned int borderpx = 4;  /* border pixel of windows */
@@ -9,11 +8,17 @@ static const int showbar           = 1;  /* 0 means no bar */
 static const int topbar            = 1;  /* 0 means bottom bar */
 static const char *fonts[]         = { "Fira Code:size=12" };
 static const char dmenufont[]      = "Fira Code:size=10";
-static const char col_gray1[]      = "#222222";
-static const char col_gray2[]      = "#444444";
-static const char col_gray3[]      = "#bbbbbb";
-static const char col_gray4[]      = "#eeeeee";
-static const char col_cyan[]       = "#005577";
+static char normbgcolor[]          = "#222222";
+static char normbordercolor[]      = "#444444";
+static char normfgcolor[]          = "#bbbbbb";
+static char selfgcolor[]           = "#eeeeee";
+static char selbordercolor[]       = "#005577";
+static char selbgcolor[]           = "#005577";
+static char *colors[][3] = {
+       /*               fg           bg           border   */
+       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+};
 
 /* tagging */
 static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
@@ -26,7 +31,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Discord",  NULL,       NULL,       1 << 5,       0,           -1 },
+	//{ "Discord",  NULL,       NULL,       1 << 5,       0,           -1 },
 	// 000100000
 };
 
@@ -56,7 +61,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "/bin/kitty", NULL };
 
 static const char *rofi[]  = { "/bin/sh", "-c", "rofi -show run -config ~/.cache/wal/colors-rofi-dark.rasi", NULL };
@@ -91,6 +96,7 @@ static const Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("pulsemixer --change-volume +5")},
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn, SHCMD("light -U 10")},
 	{ 0,                            XF86XK_MonBrightnessUp,     spawn, SHCMD("light -A 10")},
+	{ MODKEY,                       XK_u,     xrdb,           {.v = NULL } }, // set colorscheme
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
