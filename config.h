@@ -66,6 +66,7 @@ static const char *termcmd[]  = { "/bin/kitty", NULL };
 
 static const char *rofi[]  = { "/bin/sh", "-c", "rofi -show run -config ~/.cache/wal/colors-rofi-dark.rasi", NULL };
 #include <X11/XF86keysym.h>
+#include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },
@@ -97,6 +98,8 @@ static const Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn, SHCMD("light -U 10")},
 	{ 0,                            XF86XK_MonBrightnessUp,     spawn, SHCMD("light -A 10")},
 	{ MODKEY,                       XK_u,     xrdb,           {.v = NULL } }, // set colorscheme
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
