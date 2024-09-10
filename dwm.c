@@ -1193,12 +1193,12 @@ loadxrdb()
       xrdb = XrmGetStringDatabase(resm);
 
       if (xrdb != NULL) {
-        XRDB_LOAD_COLOR("dwm.color15", normbordercolor);
+        XRDB_LOAD_COLOR("dwm.color8", normbordercolor);
         XRDB_LOAD_COLOR("dwm.color0", normbgcolor);
-        XRDB_LOAD_COLOR("dwm.color15", normfgcolor);
-        XRDB_LOAD_COLOR("dwm.color15", selbordercolor);
-        XRDB_LOAD_COLOR("dwm.color10", selbgcolor);
-        XRDB_LOAD_COLOR("dwm.color15", selfgcolor);
+        XRDB_LOAD_COLOR("dwm.color7", normfgcolor);
+        XRDB_LOAD_COLOR("dwm.color2", selbordercolor);
+        XRDB_LOAD_COLOR("dwm.color2", selbgcolor);
+        XRDB_LOAD_COLOR("dwm.color7", selfgcolor);
         XRDB_LOAD_COLOR("color0",  termcol0);
         XRDB_LOAD_COLOR("color1",  termcol1);
         XRDB_LOAD_COLOR("color2",  termcol2);
@@ -2369,8 +2369,8 @@ main(int argc, char *argv[])
 #endif /* __OpenBSD__ */
 	scan();
 	// Sogist: here is where I'm putting my stuff :P
-	system("~/.fehbg"); // set wallpaper using feh
-	system("~/scripts/statusbar_time.sh &"); // display the current time on the statusbar. The & makes this run in the background
+	system("~/.fehbg &"); // set wallpaper using feh
+	system("~/bin/statusbar.sh &"); // display the current time on the statusbar. The & makes this run in the background
 	system("picom &"); // run picom in the background
 	// Sogist: Done putting my stuff
 	run();
